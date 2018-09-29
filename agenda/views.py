@@ -5,8 +5,8 @@ from .models import Paciente, Veiculo, Cidade, Motorista, AgendarConsulta
 from .forms import FormPaciente, FormVeiculo, FormCidade, FormMotorista, FormAgendarConsulta
 # Create your views here.
 def index(request):
-	lista = AgendarConsulta.objects.all()	
-	contexto = {'lista':lista }
+	lista = AgendarConsulta.objects.all() # retornar por data
+	contexto = {'lista':lista}
 	return render(request, 'agenda/index.html', contexto)
 
 

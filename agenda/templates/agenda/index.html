@@ -2,12 +2,19 @@
 
 {% block content %}
 	<div class="content">
+	
 	{% for a in lista %}
-		<p>Local: {{a.data}}</p>
-		<p>Hora: {{a.hora}}</p>
+		<p>Paciente: {{a.paciente}}</p>
+		<p>Cidade: {{a.cidade}}</p>
+		<p>Local: {{a.local}}</p>
 		<p>Data: {{a.data}}</p>
-		<p>Tipo de Consulta: {{a.tipo_de_consulta}}</p>
+		<p>Tipo de Consulta: {{a.tipo_de_consulta}}</p> <hr> <br>
 	{% endfor%}	
+
+
+	<a href="agendar_consulta">
+     <button class="btn btn-primary"> Adicionar</button>
+	</a>
 
 	</div>   	
 

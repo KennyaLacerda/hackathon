@@ -40,6 +40,6 @@ class FormAgendarConsulta(forms.Form):
    cidade = forms.ChoiceField(choices=[('0', '--Selecione--')]+    [(city.id, city.cidade) for city in Cidade.objects.all()])
 
    local = forms.CharField(max_length=2000)
-   hora_consulta = forms.TimeField()
+   #hora_consulta = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
    data = forms.DateField()
    tipo_de_consulta = forms.CharField(max_length=2000)
