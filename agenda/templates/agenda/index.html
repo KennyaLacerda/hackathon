@@ -8,12 +8,15 @@
 			<form action="envio_data_index/" method="post" >
 				{% csrf_token%}
 				<input name="data" id="data" type="date" required>
-				<input type="submit" value="Pesquisar"></div>
+				<input type="submit" value="Pesquisar">
 			</form>
 	
 			<a href="agendar_consulta">
      			<button class="btn btn-primary"> Adicionar</button>
 			</a>
+
+	</div>
+	<div>
 			<br>
 			<br>
 			{% for a in lista %}
@@ -26,18 +29,15 @@
 	
 	</div >
 
-
-
-
 	<div class="alocar">		
 		<a href="alocar_veiculo/">
-     	<button class="btn btn-primary"> Alocação</button>
-	</a>
+     		<button class="btn btn-primary"> Alocação</button>
+		</a>
 
 	</div>
 		
 
-	</div>   	
+</div>   	
 
 {% endblock %}
 

@@ -1,18 +1,29 @@
 {%extends 'agenda/base.html'%}
 
 {% block content %}
-	<div class="content">
-	{% for i in lista %}
-		<ul>
-			<li>Veiculo: {{i.veiculo}}</li>
-			<li>Agenda: {{i.agenda}}</li>
-			<li>Data de Viagem: {{i.data_viagem}}</li>
-			<li>Quantidade: {{i.qtd_cabe}}</li>
-		</ul>
-	{% endfor%}
+		 <div class="container">
+    		
+		{% for i in lista %}
+		<hr>
+			<ul>
+				<li>Veiculo: {{i.veiculo}}</li>
+				<li>Agenda: {{i.agenda}}</li>
+				<li>Data de Viagem: {{i.data_viagem}}</li>
+				<li>Quantidade: {{i.qtd_cabe}}</li>
+			</ul>
+		{% endfor%}
 
-	</div>   	
-
+		{% for a in paciente %}
+			<ul>
+					<li>Paciente: {{a.paciente}}</li>
+					<li>Cidade: {{a.cidade}}</li>
+					<li>Local: {{a.local}}</li>
+					<li>Data: {{a.data}}</li>
+					<li>Tipo de Consulta: {{a.tipo_de_consulta}}</li> <hr> <br>
+			</ul>
+		{% endfor%}
+				     
+            </div>
 {% endblock %}
 
 

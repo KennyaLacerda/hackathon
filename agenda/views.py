@@ -14,9 +14,8 @@ def relatorio(request):
 def ver_relatorio(request):
 	x = request.POST['data']
 	lista = AlocarVeiculos.objects.filter(data_viagem = x)
-	for i in lista:
-		a = i.agenda
-	contexto = {'lista':lista, 'a':a}
+	paciente = AgendarConsulta.objects.filter(data = x)
+	contexto = {'lista':lista, 'paciente':paciente}
 	return render(request, 'agenda/ver_relatorio.html', contexto)
 
 def envio_data(request):
