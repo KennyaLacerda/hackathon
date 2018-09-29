@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .models import Paciente, Veiculo, Cidade, Motorista
-from .forms import FormPaciente, FormVeiculo, FormCidade, FormMotorista
+from .models import Paciente, Veiculo, Cidade, Motorista, AgendarConsulta
+from .forms import FormPaciente, FormVeiculo, FormCidade, FormMotorista, FormAgendarConsulta
 # Create your views here.
 def index(request):
-	return render(request, 'agenda/index.html')
+	lista = AgendarConsulta.objects.all()	
+	contexto = {'lista':lista }
+	return render(request, 'agenda/index.html', contexto)
 
 
 def cadastro_paciente(request):
@@ -87,6 +89,31 @@ def cadastro_motorista(request):
 
 		contexto = {"form": form}
 		return render(request, 'agenda/cadastro_motorista.html', contexto)
+
+
+def agendar_consulta(request):
+	if request.method == 'POST':
+		form = FormAgendarConsulta(request.POST)
+		if form.is_valid():           
+        ### Salva a mensagem 
+			m = AgendarConsulta()
+			m.cidade =Cidade.objects.get(id = form.cleaned_data['cidade'])
+
+			#form.cleaned_data['cidade']
+			m.paciente = Paciente.objects.get(id = form.cleaned_data['paciente'])
+			m.local = form.cleaned_data['local']
+			m.hora_consulta = form.cleaned_data['hora_consulta']
+			m.data = form.cleaned_data['data']
+			m.tipo_de_consulta = form.cleaned_data['tipo_de_consulta']
+			m.save()
+			return HttpResponseRedirect('/agenda/sucesso')
+		else:
+			return HttpResponse("não encontrado" + str(request.POST)) 
+	else:
+		form = FormAgendarConsulta() 
+
+		contexto = {"form": form}
+		return render(request, 'agenda/agendar_consulta.html', contexto)
 
 
 

@@ -8,6 +8,7 @@ urlpatterns = [
     path('cadastro_veiculo/', views.cadastro_veiculo, name='cadastro_veiculo'),
     path('cadastro_cidade/', views.cadastro_cidade, name='cadastro_cidade'),
     path('cadastro_motorista/', views.cadastro_motorista, name='cadastro_motorista'),
+    path('agendar_consulta/', views.agendar_consulta, name='agendar_consulta'),
 
 
 

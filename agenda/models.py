@@ -39,3 +39,13 @@ class Motorista(models.Model):
 
 	def __str__(self):
 		return self.nome
+
+class AgendarConsulta(models.Model):
+	cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
+	paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+	local = models.CharField(max_length=2000)
+	hora_consulta = models.TimeField()
+	data = models.DateField()
+	tipo_de_consulta = models.CharField(max_length=2000)
+
+   

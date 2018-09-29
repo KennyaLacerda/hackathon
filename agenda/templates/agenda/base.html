@@ -20,33 +20,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-  <div class="header">
-           
+     <div class="header">
+            <br>
            <h3>Sistema de Agendamento de translado intermunicipal para Unidades de Saúde</h3>   
-  </div>
+           <br>
+     </div>
 
-  <div class="container">
-        <div class="menu">
-           <ul>
+      <div class="container">
+           <div class="menu">
+              <ul>
+               <li><a href="/agenda/">Home</a></li>
                <li><a href="/agenda/cadastro_paciente">Paciente</a></li>
                <li><a href="/agenda/cadastro_veiculo">Veiculos</a></li>
                <li><a href="/agenda/cadastro_cidade">Cidade</a></li>
                <li><a href="/agenda/cadastro_motorista">Motorista</a></li>
                <li><a href="#">Relatório</a></li>
                <li><a href="#">login</a></li>    
-           </ul>
- </div>
+                  </ul>
+          </div>
      
 
- <div class="content">
-   {% block content %}
-   {% endblock %}
- </div>
+          
+             {% block content %}
+                
 
+             {% endblock %}
+         
+      </div>
  <div class="footer">
-             
+             <br>
              <h6>Desenvolvedores: Caroline Sibenachler, Kennya Lacerda, Lucas Castoldi.</h6>
-             
+             <br>     
  </div>
 
 

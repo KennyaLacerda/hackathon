@@ -6,8 +6,8 @@
 	font-style: italic;
 
    background-image: url(fundo.jpg); 
-    background-repeat: no-repeat;
-    background-size:100% 100%;
+ 
+   
 }
 
 .menu ul {
@@ -39,11 +39,17 @@
 
 
 .footer{
+    position:absolute;
+    bottom:0;
+
+    width: 100%;
+
+
 	background-image: url(fundo.jpg);
 	
 	color: white;
-	text-align: center   
-   
+	 
+   text-align: center;
 }
 
 

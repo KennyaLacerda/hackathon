@@ -1,6 +1,19 @@
 {%extends 'agenda/base.html'%}
 
-<div class="content">
+{% block content %}
+	<div class="content">
+	{% for a in lista %}
+		<p>Local: {{a.data}}</p>
+		<p>Hora: {{a.hora}}</p>
+		<p>Data: {{a.data}}</p>
+		<p>Tipo de Consulta: {{a.tipo_de_consulta}}</p>
+	{% endfor%}	
 
-</div>
+	</div>   	
+
+{% endblock %}
+
+
+
+
 
