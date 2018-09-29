@@ -1,0 +1,18 @@
+{%extends 'agenda/base.html'%}
+{% load static %}
+<div class="content">
+{%block content%}
+	<div class="dadospessoa">
+	<p> Paciente:  {{ m.nome }}</p>
+	<p> Idade: {{m.idade}}</p>
+	<p> Telefone: {{m.telefone}}</p>
+	<p> Endereço: {{m.endereco}}</p>
+	<p> Cidade: {{m.cidade}}</p>
+
+	</div>
+	
+
+	
+	
+{% endblock %}
+</div>

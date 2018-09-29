@@ -5,7 +5,11 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('cadastro_paciente/', views.cadastro_paciente, name='cadastro_paciente'),
-    path('cadastro_veiculo/', views.veiculo, name='cadastro_veiculo'),
+    path('cadastro_veiculo/', views.cadastro_veiculo, name='cadastro_veiculo'),
+    path('cadastro_cidade/', views.cadastro_cidade, name='cadastro_cidade'),
+    path('cadastro_motorista/', views.cadastro_motorista, name='cadastro_motorista'),
+
+
 
 
     path('sucesso/', views.sucesso, name='sucesso'),

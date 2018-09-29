@@ -22,3 +22,20 @@ class Veiculo(models.Model):
    
 	def __str__(self):
 		return self.placa
+
+class Cidade(models.Model):
+	cidade = models.CharField(max_length=2000)
+	estado = models.CharField(max_length=15)
+	cep = models.CharField(max_length=15)
+
+	def __str__(self):
+		return self.cidade
+
+
+class Motorista(models.Model):
+	nome = models.CharField(max_length=2000)
+	cpf = models.CharField(max_length=15)
+	telefone = models.CharField(max_length=15)
+
+	def __str__(self):
+		return self.nome
