@@ -1,0 +1,21 @@
+{%extends 'agenda/base.html'%}
+
+{% block content %}
+	<div class="content">
+	{% for i in lista %}
+		<ul>
+			<li>Veiculo: {{i.veiculo}}</li>
+			<li>Agenda: {{i.agenda}}</li>
+			<li>Data de Viagem: {{i.data_viagem}}</li>
+			<li>Quantidade: {{i.qtd_cabe}}</li>
+		</ul>
+	{% endfor%}
+
+	</div>   	
+
+{% endblock %}
+
+
+
+
+

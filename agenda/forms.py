@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Cidade
+from .models import Paciente, Cidade, Veiculo
 
 
 
@@ -43,3 +43,11 @@ class FormAgendarConsulta(forms.Form):
    #hora_consulta = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
    data = forms.DateField()
    tipo_de_consulta = forms.CharField(max_length=2000)
+
+
+class FormAlocarVeiculos(forms.Form):  
+   
+   veiculo =forms.ChoiceField(choices=[('0', '--Selecione--')]+    [(carro.id, carro.placa) for carro in Veiculo.objects.all()])
+   #cidade = forms.ChoiceField(choices=[('0', '--Selecione--')]+    [(city.id, city.cidade) for city in Cidade.objects.all()])
+   #local = forms.CharField(max_length=2000)
+   data = forms.DateField()

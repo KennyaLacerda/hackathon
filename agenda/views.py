@@ -1,13 +1,47 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .models import Paciente, Veiculo, Cidade, Motorista, AgendarConsulta
-from .forms import FormPaciente, FormVeiculo, FormCidade, FormMotorista, FormAgendarConsulta
+from .models import Paciente, Veiculo, Cidade, Motorista, AgendarConsulta, AlocarVeiculos
+from .forms import FormPaciente, FormVeiculo, FormCidade, FormMotorista, FormAgendarConsulta, FormAlocarVeiculos
 # Create your views here.
-def index(request):
-	lista = AgendarConsulta.objects.all() # retornar por data
+
+
+
+
+def relatorio(request):
+	return render(request, 'agenda/relatorio.html')
+
+def ver_relatorio(request):
+	x = request.POST['data']
+	lista = AlocarVeiculos.objects.filter(data_viagem = x)
+	for i in lista:
+		a = i.agenda
+	contexto = {'lista':lista, 'a':a}
+	return render(request, 'agenda/ver_relatorio.html', contexto)
+
+def envio_data(request):
+	x = request.POST['data']
+	lista = AgendarConsulta.objects.filter(data =x)# retornar por data
+	car = Veiculo.objects.all()
+	form = FormAlocarVeiculos()
+	contexto = {'lista':lista, 'car': car, 'form':form}
+	return render(request, 'agenda/alocar_veiculo.html', contexto)
+
+
+def envio_data_index(request):
+	x = request.POST['data']
+	lista = AgendarConsulta.objects.filter(data =x)# retornar por data	
 	contexto = {'lista':lista}
 	return render(request, 'agenda/index.html', contexto)
+
+def alocar_veiculo(request):
+	return render(request, 'agenda/alocar_veiculo.html')
+
+def add_veiculo(request,x):
+	return render(request, 'agenda/add_veiculo.html')
+
+def index(request):
+	return render(request, 'agenda/index.html')
 
 
 def cadastro_paciente(request):
@@ -30,6 +64,35 @@ def cadastro_paciente(request):
 
 		contexto = {"form": form}
 		return render(request, 'agenda/cadastro_paciente.html', contexto)
+
+
+def alocar(request,x):
+	if request.method == 'POST':
+		form = FormAlocarVeiculos(request.POST)
+		if form.is_valid():           
+        ### Salva a mensagem 
+			
+			m = AlocarVeiculos()
+			#agenda = AgendarConsulta.objects.get(id = x)
+			car = Veiculo.objects.get(id = form.cleaned_data['veiculo'])
+			qtd = car.capacidade
+			m.agenda = AgendarConsulta.objects.get(id = x)
+			m.veiculo =car
+			
+			m.alocado = True
+			m.qtd_cabe =  qtd-1
+			m.data_viagem = form.cleaned_data['data']
+			m.save() 
+			return HttpResponseRedirect('/agenda/sucesso')
+		else:
+			return HttpResponse("não encontrado" + str(request.POST)) 
+	else:
+		form = FormAlocarVeiculos() 
+		lista = AgendarConsulta.objects.all()
+		car = Veiculo.objects.all()
+
+		contexto = {"form": form, 'lista':lista, 'car':car}
+		return render(request, 'agenda/alocar_veiculo.html', contexto)
 
 def cadastro_veiculo(request):
 	if request.method == 'POST':
